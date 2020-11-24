@@ -1,3 +1,5 @@
+import React from 'react';
+
 const { Link } = require("react-router-dom");
 
 function Header() {
