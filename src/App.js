@@ -1,25 +1,17 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import Header from './components/Header';
 import Main from './components/Main';
-import Page1 from './components/Page1';
-import Page2 from './components/Page2';
-import Page3 from './components/Page3';
+import Page from './components/Page';
+
 
 function App() {
-  const Footer = ({title}) => (<footer>{title}</footer>);
-  const footer="footer";
-
-
   return (
     <div className="App">
       <Router>
-        <Header />
         <Route exact path= '/'component={Main} /> 
-        <Route path= '/page1'component={Page1} /> 
-        <Route path= '/page2'component={Page2} /> 
-        <Route path= '/page3'component={Page3} /> 
-        <Footer title={footer}/>
+        <Route path= '/page1' render={() => <Page label="Page1" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." />} />
+        <Route path= '/page2' render={() => <Page label="Page2" text="Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur." />} />
+        <Route path= '/page3' render={() => <Page label="Page3" text="Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." />} />
       </Router>
     </div>
   );

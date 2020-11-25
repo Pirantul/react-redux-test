@@ -1,15 +1,16 @@
-import React, {useState} from "react";
-import {Link} from 'react-router-dom'
+import React, {useEffect, useState} from "react";
+import {Link, useLocation} from 'react-router-dom';
 
 function Header() {
-    const [activeItem, setActiveItem] = useState('');
+    const [path, setPath] = useState('/');
+    const location = useLocation();
 
-    const handleClick = (event) => {
-        setActiveItem(event.target.id);
-    };
+    useEffect(() =>{
+        setPath(location.pathname.slice(1))
+    },[])
 
     const MenuItem = ({id, to,children}) => {
-        return <Link id={id} to={to} onClick={handleClick} className={id === activeItem ? 'active' : ''}>{children}</Link>
+        return <Link id={id} to={to} className={(path === '' && id === 'main') || id === path ? 'active' : ''}>{children}</Link>
     } 
     
 
