@@ -1,4 +1,13 @@
+body, div, p {
+  margin: 0;
+  padding: 0;
+}
 
+body {
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.0625em;
+}
 
 header, main, footer, div {
   padding: 1rem;
@@ -6,18 +15,14 @@ header, main, footer, div {
   text-align: center;
   transition: 200ms;
 }
-header {
-  height: 5vh;
-  display: block;
-  border: 1px black solid;
-}
+
 main {
   height: 50vh;
   flex: 1 1 auto;
   border: 1px black solid;
 }
 
-.about {
+.page {
   height: 50vh;
   flex: 1 1 auto;
   border: 1px black solid;
@@ -30,4 +35,51 @@ footer {
 
 a {
   text-decoration: none;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+nav ul {
+  list-style: none;
+  text-align: center;
+  margin-top: 30px;
+}
+
+nav ul li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+nav ul li:last-child {
+  margin-right: 0;
+}
+
+nav a {
+  position: relative;
+  top: 0;
+  padding: 10px 20px;
+  font-weight: normal;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 4px;
+  background-color: #c3ecc7;
+  color: #398a46;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+nav a.active {
+  top: -4px;
+  background-color: #69C773;
+  color: #FFFFFF;
+  -webkit-box-shadow: 0 4px 0 0 #51a65f;
+  -moz-box-shadow: 0 4px 0 0 #51a65f;
+  box-shadow: 0 4px 0 0 #51a65f;
 }
