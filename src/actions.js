@@ -1,0 +1,1 @@
+export const setActiveItem = (value) => ({type: 'SET_ACTIVE_ITEM', value: value});

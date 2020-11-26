@@ -1,19 +1,26 @@
 import React, {useEffect, useState} from "react";
 import {Link, useLocation} from 'react-router-dom';
+import {setActiveItem} from '../actions';
+import {connect} from 'react-redux';
+import { bindActionCreators } from 'redux';
 
-function Header() {
-    const [path, setPath] = useState('/');
+function Header({setActiveItem}) {
+    const [path, setPath] = useState('');
     const location = useLocation();
 
     useEffect(() =>{
-        setPath(location.pathname.slice(1))
+        setPath(location.pathname.slice(1));
     },[])
 
-    const MenuItem = ({id, to,children}) => {
-        return <Link id={id} to={to} className={(path === '' && id === 'main') || id === path ? 'active' : ''}>{children}</Link>
-    } 
-    
+    const handleClick = () => {
+        setActiveItem(path);
+    }
 
+    const MenuItem = ({id, to,children}) => {
+        return <Link id={id} to={to} onClick={handleClick} className={(path === '' && id === 'main') || id === path ? 'active' : ''}>{children}</Link>
+    } 
+
+    // console.log(state.getState());
     return (
         <header>
             <nav>
@@ -27,6 +34,13 @@ function Header() {
         </header>
     );
   }
+
+  const mapStateToProps = (state) => {
+          
+    return {
+        activeItem: state
+    }
+}
   
-  export default Header;
+  export default connect(mapStateToProps, {setActiveItem})(Header);
   
