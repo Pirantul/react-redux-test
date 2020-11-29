@@ -37,30 +37,28 @@ a {
   text-decoration: none;
 }
 
-nav {
-  position: fixed;
+header {
   top: 0;
   left: 0;
-  width: 100%;
   z-index: 100;
 }
 
-nav ul {
+header ul {
   list-style: none;
   text-align: center;
   margin-top: 30px;
 }
 
-nav ul li {
+header ul li {
   display: inline-block;
   margin-right: 20px;
 }
 
-nav ul li:last-child {
+header ul li:last-child {
   margin-right: 0;
 }
 
-nav a {
+header a {
   position: relative;
   top: 0;
   padding: 10px 20px;
@@ -75,11 +73,26 @@ nav a {
   box-shadow: none;
 }
 
-nav a.active {
+header a.active {
   top: -4px;
   background-color: #69C773;
   color: #FFFFFF;
   -webkit-box-shadow: 0 4px 0 0 #51a65f;
   -moz-box-shadow: 0 4px 0 0 #51a65f;
   box-shadow: 0 4px 0 0 #51a65f;
+}
+
+a {
+  margin-right: 20px;
+
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+button {
+  
+  margin-left: 10px !important;
 }

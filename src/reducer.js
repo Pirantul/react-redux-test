@@ -1,10 +1,25 @@
-const reducer = (state = '', action) => {
+const initialState = {inputTask: '', tasks: ['one', 'two']}
+
+const reducer = (state = initialState, action) => {
     console.log(action);
-    if (action.type === 'SET_ACTIVE_ITEM') {
-        return action.value;
-    } else {
-        return state;
+    console.log(state);
+    switch (action.type) {
+        case 'ADD_TASK':
+            const newTasks = state.tasks;
+            newTasks.push(action.payload)
+            return {
+                ...state,
+                inputTask: '',
+                tasks: newTasks
+            }
+        case 'CHANGE_INPUT_FIELD':
+            return {
+                ...state,
+                inputTask: action.payload
+            }
+        default:
+            return state;
     }
-  };
+};
   
-  export default reducer;
+export default reducer;
