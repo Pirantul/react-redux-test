@@ -1,0 +1,27 @@
+main {
+    height: 50vh;
+    flex: 1 1 auto;
+  }
+
+  a {
+    margin-right: 20px;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  button { 
+    margin-left: 10px !important;
+  }
+
+  .list-group {
+      margin-top: 10px;
+  }
+
+  .list-group-item {
+    display: flex !important;
+    justify-content:space-around; 
+  }
+

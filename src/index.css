@@ -9,17 +9,11 @@ body {
   letter-spacing: 0.0625em;
 }
 
-header, main, footer, div {
+header, main, footer {
   padding: 1rem;
   margin: .5rem 1rem;
   text-align: center;
   transition: 200ms;
-}
-
-main {
-  height: 50vh;
-  flex: 1 1 auto;
-  border: 1px black solid;
 }
 
 .page {
@@ -82,17 +76,3 @@ header a.active {
   box-shadow: 0 4px 0 0 #51a65f;
 }
 
-a {
-  margin-right: 20px;
-
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-button {
-  
-  margin-left: 10px !important;
-}
