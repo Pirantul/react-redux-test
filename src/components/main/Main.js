@@ -12,7 +12,7 @@ function Main() {
     const inputTask = useSelector(state => state.inputTask);
     const dispatch = useDispatch();
 
-    const handleChangeInput = (e) => {
+    const handleChangeAddTask = (e) => {
         dispatch(actions.changeInputField(e.target.value))
     };
 
@@ -32,21 +32,34 @@ function Main() {
         inputField.focus();
     };
 
+    const handleChangeInput = (e, id) => {
+        dispatch(actions.editTask({id: id, value: e.target.value}))
+    }
+
     return(
         <>
             <Header />
                 <main className='container'>
                     <h3>Tasks</h3>
-                    <input id='input-task' type='text' value={inputTask} onChange={handleChangeInput} />
+                    <input id='input-task' type='text' value={inputTask} onChange={handleChangeAddTask} />
                     <button className='btn btn-info btn-sm align-middle' onClick={handleClickAdd}>Add task</button>
                     <ul className="list-group">
                         {tasks.map((task, i)=>{
                            return (
                            <li key={task.id}  id={task.id} className="list-group-item">
-                               <input type='text' disabled="disabled" value={task.value} />
+                               <input 
+                                    type='text' 
+                                    disabled="disabled" 
+                                    onChange={(e)=>{handleChangeInput(e, task.id)}} 
+                                    onBlur={(e)=>{e.target.disabled = true}}  
+                                    value={task.value} />
                                <div>
-                                    <button className="btn btn-outline-success btn-sm" onClick={()=>{handleClickEdit(task.id)}}>Edit</button>
-                                    <button className="btn btn-outline-danger btn-sm" onClick={()=>handleClickDelete(task.id)}>Delete</button>
+                                    <button 
+                                        className="btn btn-outline-success btn-sm" 
+                                        onClick={()=>{handleClickEdit(task.id)}}>Edit</button>
+                                    <button 
+                                        className="btn btn-outline-danger btn-sm" 
+                                        onClick={()=>handleClickDelete(task.id)}>Delete</button>
                                </div>
                            </li>)
                         })}

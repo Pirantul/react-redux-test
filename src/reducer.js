@@ -1,8 +1,7 @@
 const initialState = {inputTask: '', tasks: [{id:'shdjdfk23', value: 'one'}, {id:'ddamdk', value: 'two'}]}
 
 const reducer = (state = initialState, action) => {
-    console.log(action);
-    console.log(state);
+
     let newTasks = state.tasks;
     switch (action.type) {
         case 'ADD_TASK':
@@ -21,17 +20,14 @@ const reducer = (state = initialState, action) => {
             newTasks = newTasks.filter((item)=>{return item.id !== action.payload});
             return {
                 ...state,
-                inputTask: '',
                 tasks: newTasks
             }
         case 'EDIT_TASK':
-            console.log(action.payload);
-            //newTasks = newTasks.filter((item)=>{return item.id !== action.payload});
-            // return {
-            //     ...state,
-            //     inputTask: '',
-            //     tasks: newTasks
-            // }
+            const editedTasks = newTasks.map((item)=>{return item.id === action.payload.id ? action.payload : item })
+            return {
+                ...state,
+                tasks: editedTasks
+            }
         default:
             return state;
     }
