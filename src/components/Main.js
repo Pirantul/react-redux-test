@@ -6,7 +6,7 @@ import {addTask, changeInputField} from '../actions';
 
 function Main() {
     const tasks = useSelector(state => state.tasks);
-    const inputField = useSelector(state => state.inputField);
+    const inputTask = useSelector(state => state.inputTask);
     const dispatch = useDispatch();
 
     const handleChangeInput = (e) => {
@@ -14,7 +14,7 @@ function Main() {
     };
 
     const handleClickAdd = () => {
-        dispatch(addTask(document.getElementById('input-task').value))
+        dispatch(addTask(inputTask))
     };
 
     return(
@@ -27,8 +27,8 @@ function Main() {
                            return (<li key={i}>{task}</li>)
                         })}
                     </ul>
-                    <input id='input-task' type='text' value={inputField} onChange={handleChangeInput} />
-                    <button className='btn btn-primary' onClick={()=>{dispatch(addTask(document.getElementById('input-task').value))}}>Add</button>
+                    <input id='input-task' type='text' value={inputTask} onChange={handleChangeInput} />
+                    <button className='btn btn-primary' onClick={()=>{dispatch(addTask(inputTask))}}>Add</button>
                 </main> 
             <Footer />
         </>)
