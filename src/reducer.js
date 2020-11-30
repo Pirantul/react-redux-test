@@ -18,13 +18,20 @@ const reducer = (state = initialState, action) => {
                 inputTask: action.payload
             }
         case 'DELETE_TASK':
-            console.log(newTasks);
             newTasks = newTasks.filter((item)=>{return item.id !== action.payload});
             return {
                 ...state,
                 inputTask: '',
                 tasks: newTasks
             }
+        case 'EDIT_TASK':
+            console.log(action.payload);
+            //newTasks = newTasks.filter((item)=>{return item.id !== action.payload});
+            // return {
+            //     ...state,
+            //     inputTask: '',
+            //     tasks: newTasks
+            // }
         default:
             return state;
     }

@@ -2,7 +2,7 @@ import React from 'react';
 import Header from '../Header';
 import Footer from '../Footer';
 import {useSelector, useDispatch} from 'react-redux';
-import {addTask, changeInputField, deleteTask} from '../../actions';
+import * as actions from '../../actions';
 import './main.css';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -13,18 +13,23 @@ function Main() {
     const dispatch = useDispatch();
 
     const handleChangeInput = (e) => {
-        dispatch(changeInputField(e.target.value))
+        dispatch(actions.changeInputField(e.target.value))
     };
 
     const handleClickAdd = () => {
         if (inputTask) {
-            dispatch(addTask({id: uuidv4(), value: inputTask}))
+            dispatch(actions.addTask({id: uuidv4(), value: inputTask}))
         }
     };
 
-    const handleClickDelete = e => {
-        dispatch(deleteTask(e.target.parentElement.parentElement.id))
-        console.log(e.target.parentElement.parentElement);
+    const handleClickDelete = id => {
+        dispatch(actions.deleteTask(id))
+    };
+
+    const handleClickEdit = id => {
+        const inputField = document.getElementById(id).querySelector('input');
+        inputField.disabled = false;
+        inputField.focus();
     };
 
     return(
@@ -40,8 +45,8 @@ function Main() {
                            <li key={task.id}  id={task.id} className="list-group-item">
                                <input type='text' disabled="disabled" value={task.value} />
                                <div>
-                                    <button className="btn btn-outline-success btn-sm">Edit</button>
-                                    <button className="btn btn-outline-danger btn-sm" onClick={handleClickDelete}>Delete</button>
+                                    <button className="btn btn-outline-success btn-sm" onClick={()=>{handleClickEdit(task.id)}}>Edit</button>
+                                    <button className="btn btn-outline-danger btn-sm" onClick={()=>handleClickDelete(task.id)}>Delete</button>
                                </div>
                            </li>)
                         })}
